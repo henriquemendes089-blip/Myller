@@ -141,6 +141,8 @@
         .ig-strip-btn{display:inline-flex;align-items:center;gap:.7rem;background:var(--forest);color:var(--gold);padding:.85rem 2.2rem;border-radius:3px;text-decoration:none;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:background .3s,color .3s;white-space:nowrap;flex-shrink:0}
         .ig-strip-btn:hover{background:var(--cream);color:var(--forest)}
         .ig-strip-btn svg{flex-shrink:0}
+        .port-carousel-wrap{position:relative}
+        .port-arrow{display:none}
         .port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;max-width:1400px;margin:0 auto;padding:0 4rem}
         .port-video-wrap{position:relative;border-radius:8px;overflow:hidden;background:#0d1f0d;aspect-ratio:9/16;box-shadow:0 4px 16px rgba(0,0,0,.45)}
         .port-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
@@ -270,9 +272,14 @@
             #portfolio{padding:3rem 0 2.5rem}
             .port-head{padding:0 1.5rem;flex-direction:column;align-items:center;gap:.5rem;text-align:center}
             .port-head > div{width:100%;text-align:center}
-            .port-grid{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:.75rem;padding:0 1.5rem;max-width:100%}
+            .port-carousel-wrap{position:relative}
+            .port-grid{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:.75rem;padding:0 12vw;max-width:100%;scroll-padding-left:12vw}
             .port-grid::-webkit-scrollbar{display:none}
-            .port-video-wrap{flex:0 0 72vw;scroll-snap-align:start;max-width:280px}
+            .port-video-wrap{flex:0 0 74vw;scroll-snap-align:center;max-width:300px}
+            .port-arrow{display:flex!important;align-items:center;justify-content:center;position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;background:rgba(22,41,22,.62);backdrop-filter:blur(6px);border-radius:50%;color:var(--cream);pointer-events:none;transition:opacity .35s;z-index:10}
+            .port-arrow-left{left:6px}
+            .port-arrow-right{right:6px}
+            .port-arrow.hide{opacity:0}
             .port-frase{padding:1.2rem 1.5rem .1rem}
             .port-frase p{font-size:1.15rem;white-space:normal}
             .port-frase span{font-size:.9rem}
@@ -417,13 +424,21 @@
             <h2 class="section-title reveal d1">Cada jardim é<br><em>uma obra única</em></h2>
         </div>
     </div>
-    <div class="port-grid" id="portTrack">
-        <div class="port-video-wrap"><video src="video1.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
-        <div class="port-video-wrap"><video src="video2.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
-        <div class="port-video-wrap"><video src="video3.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
-        <div class="port-video-wrap"><video src="video4.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
-        <div class="port-video-wrap"><video src="video5.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
-        <div class="port-video-wrap"><video src="video6.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
+    <div class="port-carousel-wrap">
+        <div class="port-grid" id="portTrack">
+            <div class="port-video-wrap"><video src="video1.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
+            <div class="port-video-wrap"><video src="video2.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
+            <div class="port-video-wrap"><video src="video3.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
+            <div class="port-video-wrap"><video src="video4.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
+            <div class="port-video-wrap"><video src="video5.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
+            <div class="port-video-wrap"><video src="video6.mp4#t=0.001" controls playsinline preload="metadata"></video><div class="port-play"><svg width="52" height="52" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div></div>
+        </div>
+        <div class="port-arrow port-arrow-left" id="portArrowLeft">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </div>
+        <div class="port-arrow port-arrow-right" id="portArrowRight">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </div>
     </div>
     <div class="port-frase reveal">
         <span>✦</span>
@@ -1016,6 +1031,21 @@ track.addEventListener('mousedown',e=>{drag=true;sx=e.pageX-track.offsetLeft;sl=
 track.addEventListener('mouseleave',()=>drag=false);
 track.addEventListener('mouseup',()=>drag=false);
 track.addEventListener('mousemove',e=>{if(!drag)return;e.preventDefault();track.scrollLeft=sl-(e.pageX-track.offsetLeft-sx)*2;});
+
+// ── PORTFOLIO ARROWS (mobile) ─────────────────────────
+(function(){
+    const arrowL=document.getElementById('portArrowLeft');
+    const arrowR=document.getElementById('portArrowRight');
+    if(!arrowL||!arrowR)return;
+    function updateArrows(){
+        const atStart=track.scrollLeft<=4;
+        const atEnd=track.scrollLeft>=track.scrollWidth-track.clientWidth-4;
+        arrowL.classList.toggle('hide',atStart);
+        arrowR.classList.toggle('hide',atEnd);
+    }
+    track.addEventListener('scroll',updateArrows,{passive:true});
+    updateArrows();
+})();
 </script>
 
 <!-- WhatsApp Float Button -->
